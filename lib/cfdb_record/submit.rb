@@ -12,7 +12,6 @@ class CFDBRecord
     def attrs
       @attrs ||= begin
         attrs = Value.where(submit_time: @submit_time).each_with_object({}) { |val, obj| obj[val.field_name] = val.field_value }
-        update_timestamp(attrs)
         add_attrs(attrs)
       end
     end
@@ -39,12 +38,6 @@ class CFDBRecord
       base_attrs['data_source'] = 'GoogleAdwords' if base_attrs.key?('loc_interest_ms')
       base_attrs['data_source'] = 'Yahooスポンサードサーチ' if base_attrs.key?('dgroupid')
       base_attrs
-    end
-
-    def update_timestamp(base_attrs)
-      base_attrs.each do |k, v|
-        base_attrs[k] = Time.parse(v).in_time_zone('Asia/Tokyo').strftime('%Y/%m/%d %H:%M:%S') if k.start_with?('timestamp') && v.present?
-      end
     end
 
     def attrs_from_url(url)
