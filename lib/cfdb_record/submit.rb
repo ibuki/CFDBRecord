@@ -35,8 +35,8 @@ class CFDBRecord
     def add_attrs(base_attrs)
       base_attrs.merge!(attrs_from_url(base_attrs['url']))
       base_attrs['submit_time'] = @submit_time
-      base_attrs['data_source'] = 'GoogleAdwords' if base_attrs.key?('loc_interest_ms')
-      base_attrs['data_source'] = 'Yahooスポンサードサーチ' if base_attrs.key?('dgroupid')
+      base_attrs['data_source'] = 'Yahooスポンサードサーチ' if base_attrs['media'] == 'yss'
+      base_attrs['data_source'] = 'GoogleAdwords' if base_attrs['media'] == 'gaw'
       base_attrs
     end
 
