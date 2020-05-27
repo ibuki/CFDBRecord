@@ -24,9 +24,9 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'bundler', '~> 1.16'
   spec.add_development_dependency 'database_cleaner'
   spec.add_development_dependency 'factory_bot'
-  spec.add_development_dependency 'rake', '~> 10.0'
+  spec.add_development_dependency 'rake', '>= 12.3.3'
   spec.add_development_dependency 'rspec', '~> 3.0'
   spec.add_development_dependency 'sqlite3'
-  spec.add_dependency 'activerecord', '~> 5.1.5'
+  spec.add_dependency 'activerecord', '~> 5.2'
   spec.add_dependency 'kintone', '0.1.5'
 end
