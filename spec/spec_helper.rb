@@ -21,12 +21,12 @@ RSpec.configure do |config|
     File.delete(DB_PATH)
   end
 
-  config.before(:each) do
+  config.before do
     DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.start
   end
 
-  config.after(:each) do
+  config.after do
     DatabaseCleaner.clean
   end
 end
